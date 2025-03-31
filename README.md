@@ -1,164 +1,93 @@
-Catálogo de E-commerce com Autenticação e Padrões de Design (Service & Repository)
-Este projeto implementa um catálogo de e-commerce com autenticação de usuários, utilizando Laravel para o backend, React para o frontend, MySQL como banco de dados, e Docker para containerização. O código segue os padrões de design Service e Repository, promovendo uma boa organização e separação de responsabilidades.
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de E-commerce</title>
+</head>
+<body>
+  <header>
+    <h1>Catálogo de E-commerce</h1>
+    <p>Este projeto é um catálogo simples de produtos para um e-commerce com autenticação de usuários. O catálogo permite a exibição de produtos, listagem por categoria, e pesquisa de produtos. O backend foi desenvolvido com Laravel, o frontend com React, e o banco de dados em MySQL. O projeto foi containerizado utilizando Docker.</p>
+  </header>
+  
+  <section>
+    <h2>📋 Objetivo</h2>
+    <p>O objetivo deste projeto é fornecer um sistema de catálogo de produtos com autenticação de usuários, com a estrutura bem organizada usando os padrões de design Service e Repository, além da utilização de response collection para padronização das respostas da API.</p>
+  </section>
 
-Funcionalidades
-Backend (Laravel)
-Produtos:
+  <section>
+    <h2>⚙️ Requisitos do Backend (Laravel + MySQL)</h2>
+    <h3>1. API em Laravel</h3>
+    <ul>
+      <li><strong>GET /api/products</strong>: Listar todos os produtos com paginação.</li>
+      <li><strong>GET /api/products/{id}</strong>: Exibir detalhes de um produto específico.</li>
+      <li><strong>GET /api/products?category={id}</strong>: Listar produtos por categoria.</li>
+      <li><strong>GET /api/products?search={query}</strong>: Buscar produtos por nome ou descrição.</li>
+      <li><strong>GET /api/categories</strong>: Listar todas as categorias de produtos.</li>
+      <li><strong>POST /api/login</strong>: Autenticar usuário e gerar um token de acesso.</li>
+      <li><strong>POST /api/register</strong>: Registrar um novo usuário.</li>
+    </ul>
+    <h3>2. Autenticação e Autorização</h3>
+    <p>A autenticação é implementada utilizando o Laravel Sanctum para garantir que os endpoints protegidos possam ser acessados apenas por usuários autenticados.</p>
+  </section>
 
-Listagem de produtos com paginação.
+  <section>
+    <h2>🎨 Requisitos do Frontend (React)</h2>
+    <h3>1. Exibição dos Produtos</h3>
+    <ul>
+      <li>Criar uma página de listagem de produtos consumindo a API do Laravel.</li>
+      <li>Adicionar funcionalidades de paginação e filtro de categoria.</li>
+    </ul>
+    <h3>2. Pesquisa de Produtos</h3>
+    <p>Criar um campo de busca que consome a API de pesquisa e exibe os resultados na página de listagem.</p>
+    <h3>3. Detalhamento do Produto</h3>
+    <p>Criar uma página de detalhes de produto que consome a API e exibe informações completas sobre o produto selecionado.</p>
+    <h3>4. Cadastro e Login de Usuário</h3>
+    <p>Criar páginas de Cadastro e Login utilizando a API de autenticação, e armazenar o token JWT no localStorage após login.</p>
+  </section>
 
-Exibição de detalhes de um produto específico.
+  <section>
+    <h2>🐳 Dockerização do Projeto</h2>
+    <p>O projeto foi containerizado utilizando o Docker para garantir que tanto o backend quanto o frontend possam ser executados em ambientes isolados. O Docker Compose foi configurado para orquestrar os seguintes containers:</p>
+    <ul>
+      <li><strong>Backend</strong>: Laravel + PHP + Composer</li>
+      <li><strong>Banco de Dados</strong>: MySQL</li>
+      <li><strong>Frontend</strong>: React + Node.js</li>
+    </ul>
+  </section>
 
-Filtro por categoria de produto.
+  <section>
+    <h2>🛠️ Como Rodar o Projeto Localmente</h2>
+    <h3>1. Clonando o Repositório</h3>
+    <pre><code>git clone https://github.com/seu-usuario/ecommerce-catalog.git</code></pre>
+    
+    <h3>2. Rodando com Docker</h3>
+    <p>Após clonar o repositório, entre na pasta do projeto e execute os seguintes comandos:</p>
+    <pre><code>docker-compose up --build</code></pre>
+    <p>Isso irá construir os containers e iniciar o backend, frontend, e o banco de dados MySQL.</p>
+    
+    <h3>3. Configurações do Backend</h3>
+    <ul>
+      <li>Execute as migrations do Laravel:</li>
+      <pre><code>docker-compose exec backend php artisan migrate</code></pre>
+      <li>Popule o banco de dados com alguns dados de teste (opcional):</li>
+      <pre><code>docker-compose exec backend php artisan db:seed</code></pre>
+    </ul>
 
-Busca de produtos por nome ou descrição.
+    <h3>4. Acesse o Projeto</h3>
+    <p>O frontend estará disponível no endereço <a href="http://localhost:3000" target="_blank">http://localhost:3000</a> e o backend estará acessível no endereço <a href="http://localhost:8000" target="_blank">http://localhost:8000</a>.</p>
+  </section>
 
-Categorias:
+  <section>
+    <h2>🔐 Segurança e Boas Práticas</h2>
+    <p>A autenticação foi implementada com Laravel Sanctum e as respostas da API seguem o padrão de response collection para garantir consistência e facilidade de consumo no frontend.</p>
+    <p>O código segue boas práticas de design, utilizando o padrão Repository e Service para garantir a separação de responsabilidades, modularidade e facilidade de manutenção.</p>
+  </section>
 
-Listagem de categorias de produtos.
-
-Autenticação e Autorização:
-
-Registro de usuários.
-
-Login de usuários com geração de token JWT.
-
-Proteção de endpoints com autenticação baseada em Sanctum.
-
-Frontend (React)
-Exibição da lista de produtos com filtragem por categoria e pesquisa por nome/descrição.
-
-Detalhamento do produto.
-
-Cadastro e login de usuários com armazenamento do token no localStorage.
-
-Docker
-O projeto está containerizado com Docker e Docker Compose.
-
-Inclui três containers:
-
-Backend (Laravel + PHP + Composer).
-
-Banco de dados MySQL.
-
-Frontend (React + Node.js).
-
-Pré-requisitos
-Antes de rodar o projeto, certifique-se de que você tem os seguintes itens instalados:
-
-Docker e Docker Compose: Para rodar o ambiente containerizado.
-
-Composer: Para gerenciar as dependências do Laravel.
-
-Node.js e npm: Para rodar o frontend em React.
-
-Instruções de Execução
-Passo 1: Clonar o Repositório
-Clone este repositório para o seu ambiente local:
-
-bash
-Copiar
-git clone https://github.com/seu-usuario/ecommerce-catalog.git
-cd ecommerce-catalog
-Passo 2: Configuração do Docker
-Com o Docker e Docker Compose instalados, navegue até o diretório do projeto e execute o comando para iniciar os containers.
-
-bash
-Copiar
-docker-compose up --build
-Esse comando irá:
-
-Criar e iniciar os containers do backend, frontend e banco de dados.
-
-Rodar o Laravel em um container, o React em outro, e o MySQL no terceiro.
-
-Passo 3: Configuração do Banco de Dados
-Após os containers estarem em execução, você precisará rodar as migrations para configurar o banco de dados. Para isso, execute o seguinte comando no container do backend:
-
-bash
-Copiar
-docker-compose exec app php artisan migrate
-Isso irá criar as tabelas necessárias no banco de dados.
-
-Passo 4: Configuração do Frontend
-O frontend em React será automaticamente acessado pelo Docker na URL configurada. Mas para rodá-lo localmente (fora do Docker), basta entrar no diretório do frontend e rodar:
-
-bash
-Copiar
-cd frontend
-npm install
-npm start
-Isso irá rodar o React no http://localhost:3000.
-
-Passo 5: Acessar a API
-A API do Laravel estará disponível em http://localhost:8000. A partir deste ponto, você pode acessar os endpoints de produtos, categorias, autenticação e outras funcionalidades.
-
-Endpoints da API
-POST /api/register - Registrar um novo usuário.
-
-Corpo da requisição:
-
-json
-Copiar
-{
-  "name": "Nome do Usuário",
-  "email": "usuario@exemplo.com",
-  "password": "senha123",
-  "password_confirmation": "senha123"
-}
-POST /api/login - Realizar login de um usuário.
-
-Corpo da requisição:
-
-json
-Copiar
-{
-  "email": "usuario@exemplo.com",
-  "password": "senha123"
-}
-Resposta:
-
-json
-Copiar
-{
-  "message": "Login bem-sucedido",
-  "token": "seu_token_jwt_aqui"
-}
-GET /api/products - Listar todos os produtos com paginação.
-
-GET /api/products/{id} - Exibir detalhes de um produto específico.
-
-GET /api/products?category={id} - Filtrar produtos por categoria.
-
-GET /api/products?search={query} - Buscar produtos por nome ou descrição.
-
-GET /api/categories - Listar todas as categorias de produtos.
-
-Proteção dos Endpoints
-Endpoints que requerem autenticação (como a criação de produtos) devem ser chamados com o token JWT no cabeçalho da requisição:
-
-bash
-Copiar
-Authorization: Bearer seu_token_jwt_aqui
-Estrutura do Projeto
-Backend (Laravel)
-app/Http/Controllers/AuthController.php: Lógica de autenticação (registro e login).
-
-app/Repositories/UserRepository.php: Interações com o banco de dados para o modelo de usuário.
-
-app/Services/UserService.php: Lógica de negócios para o usuário.
-
-app/Models/User.php: Modelo de dados para usuários.
-
-routes/api.php: Definição das rotas da API.
-
-Frontend (React)
-src/components/ProductList.js: Exibição da lista de produtos.
-
-src/components/ProductDetail.js: Detalhes de um produto.
-
-src/pages/Login.js: Página de login.
-
-src/pages/Register.js: Página de registro de usuário.
-
-src/api.js: Funções para consumir a API do Laravel.
+  <section>
+    <h2>📚 Licença</h2>
+    <p>Este projeto está licenciado sob a MIT License - veja o arquivo <code>LICENSE</code> para mais detalhes.</p>
+  </section>
+</body>
+</html>

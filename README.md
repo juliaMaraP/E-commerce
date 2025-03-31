@@ -60,7 +60,7 @@
   <section>
     <h2>🛠️ Como Rodar o Projeto Localmente</h2>
     <h3>1. Clonando o Repositório</h3>
-    <pre><code>git clone [https://github.com/seu-usuario/ecommerce-catalog.git](https://github.com/juliaMaraP/E-commerce.git)</code></pre>
+    <pre><code>git clone (https://github.com/juliaMaraP/E-commerce.git)</code></pre>
     
     <h3>2. Rodando com Docker</h3>
     <p>Após clonar o repositório, entre na pasta do projeto e execute os seguintes comandos:</p>

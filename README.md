@@ -60,7 +60,7 @@
   <section>
     <h2>🛠️ Como Rodar o Projeto Localmente</h2>
     <h3>1. Clonando o Repositório</h3>
-    <pre><code>git clone https://github.com/seu-usuario/ecommerce-catalog.git</code></pre>
+    <pre><code>git clone [https://github.com/seu-usuario/ecommerce-catalog.git](https://github.com/juliaMaraP/E-commerce.git)</code></pre>
     
     <h3>2. Rodando com Docker</h3>
     <p>Após clonar o repositório, entre na pasta do projeto e execute os seguintes comandos:</p>
@@ -84,10 +84,5 @@
     <p>A autenticação foi implementada com Laravel Sanctum e as respostas da API seguem o padrão de response collection para garantir consistência e facilidade de consumo no frontend.</p>
     <p>O código segue boas práticas de design, utilizando o padrão Repository e Service para garantir a separação de responsabilidades, modularidade e facilidade de manutenção.</p>
   </section>
-
-  <section>
-    <h2>📚 Licença</h2>
-    <p>Este projeto está licenciado sob a MIT License - veja o arquivo <code>LICENSE</code> para mais detalhes.</p>
-  </section>
-</body>
+ </body>
 </html>
